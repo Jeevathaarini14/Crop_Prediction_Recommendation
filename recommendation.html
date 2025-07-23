@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ crop_name }} Recommendation</title>
+</head>
+<body>
+    <h1>{{ crop_name }} Recommendation</h1>
+    
+    <!-- Display fertilizer recommendation -->
+    <h3>Fertilizer Recommendation:</h3>
+    <p>{{ recommendation['fertilizer'] }}</p>
+    
+    <!-- Display irrigation recommendation -->
+    <h3>Irrigation Recommendation:</h3>
+    <p>{{ recommendation['irrigation'] }}</p>
+
+    <!-- Display maintenance recommendation -->
+    <h3>Maintenance Process:</h3>
+    <p>{{ recommendation['maintenance'] }}</p>
+
+    <!-- Display cultivation process -->
+    <h3>Cultivation Process:</h3>
+    <p>{{ recommendation['cultivation'] }}</p>
+
+    <!-- Back to home button -->
+    <button onclick="window.location.href='/'">Back to Home</button>
+</body>
+</html>

@@ -1,40 +1,162 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AGRICULTURE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Prediction Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Basic styling */
+        body, html {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpapercave.com/wp/wp5600056.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1, h2 {
+            margin-top: 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #c7a3c2;
+            padding: 20px;
+            width: 100%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px rgba(43, 4, 4, 0.3);
+            color: #180404;
+            text-align: left;
+
+            /* Decorative border */
+            border: 5px dashed #085c24; /* Double border style */
+            border-image: linear-gradient(to right, #085c24, #085c24) 1; /* Gradient border */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        /* Different text styles */
+        h2 {
+            font-size: 1.8em;
+            color: #264b61;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: #07140e;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        p {
+            font-size: 1em;
+            color: #a2124c;
+            line-height: 1.5;
+        }
+    </style>
 </head>
-
-
 <body>
 
-        <p><h2>AGRICULTURE:</h2> <h3>{{ prediction_text1 }}</h3><br>
-        <!-- <p><h2>LOGISTIC POWER:</h2> <h3>{{ prediction_text2 }}</h3><br> -->
-    
+<div class="content">
+    <h1>Crop Prediction Result</h1>
+    <h2>Predicted Crop: {{ prediction_text1 }}</h2>
+    <button class="btn" id="openModal">View Recommendations</button>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">×</span>
+        <h2>Recommendations for {{ prediction_text1 }}</h2>
+        <h3>Fertilizer Recommendation:</h3>
+        <p>{{ recommendation_text.fertilizer }}</p>
+        <h3>Irrigation Recommendation:</h3>
+        <p>{{ recommendation_text.irrigation }}</p>
+        <h3>Maintenance Process:</h3>
+        <p>{{ recommendation_text.maintenance }}</p>
+        <h3>Cultivation Process:</h3>
+        <p>{{ recommendation_text.cultivation }}</p>
+    </div>
+</div>
+
+<script>
+    // Get modal elements
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("openModal");
+    var span = document.getElementById("closeModal");
+
+    // Open the modal
+    btn.onclick = function() {
+        modal.style.display = "flex";
+    }
+
+    // Close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
-
-
-
-<style type="text/css">
-
-    
-             body {
-                      width: 100vw;
-                      height: 100vh;
-                      display: flex;
-                      overflow: hidden;
-                      flex-direction: column;
-                      justify-content: center;
-                      align-items: center;
-                      font-family: sans-serif;
-                      font-size: xx-large;
-                      background-image: url(https://th.bing.com/th/id/R.b8e79cd0037fedf85096b341d36d3796?rik=6XIwJ6feGJOZJg&riu=http%3a%2f%2fcropconsult.com.au%2fwp-content%2fuploads%2f2017%2f05%2fcropped-crop-background-02.jpg&ehk=ZwgqM5%2fGy%2b4bApiMqtJyb%2flUKc530jn5M8ZXBGKwARA%3d&risl=&pid=ImgRaw&r=0);
-                      background-position: center; /* Center the image */
-                      background-repeat: no-repeat; /* Do not repeat the image */
-                      background-size: cover; /* Resize the background image to cover the entire container */
-    }
-    
-      </style>
-    
